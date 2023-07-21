@@ -20,7 +20,5 @@ use App\Livewire\Product\Product;
 //     return view('welcome');
 // });
 
-Route::get('/',Test::class);
-
-Route::get('/',Dashboard::class);
-Route::get('/product',Product::class);
+Route::get('/',Dashboard::class)->name('dashboard');
+Route::get('/product',Product::class)->name('product.list');

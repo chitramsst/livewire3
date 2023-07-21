@@ -38,8 +38,9 @@
             </div>
         </header>
         <!--/Header-->
-
         <div class="flex flex-1">
+        <livewire:components.sidebar/>
+
             <!--Main-->
             <main class="bg-white-300 flex-1 p-3 overflow-hidden">
 
