@@ -1,3 +1,3 @@
-<div>
-    {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
+<div class="text-blue-300">
+    Test
 </div>
