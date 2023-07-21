@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Livewire\Dashboard;
+use App\Livewire\Dashboard;
+use App\Livewire\Product\Index;
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Test;
 use App\Livewire\Product\Product;
 
 /*
@@ -20,5 +20,7 @@ use App\Livewire\Product\Product;
 //     return view('welcome');
 // });
 
+//Route::get('/',Dashboard::class)->name('dashboard');
 Route::get('/',Dashboard::class)->name('dashboard');
-Route::get('/product',Product::class)->name('product.list');
+Route::get('/product',Index::class)->name('product.list');
+Route::get('/product/create',Product::class)->name('product.create');

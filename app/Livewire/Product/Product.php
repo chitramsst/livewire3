@@ -18,7 +18,7 @@ class Product extends Component
     #[Rule('required')] 
     public $name = '';
 
-    #[Rule('required')] 
+    #[Rule('required|min:1')] 
     public $price = '';
 
     public function render()
@@ -44,5 +44,8 @@ class Product extends Component
         }
         $product->price = $this->price;
         $product->save();
+        //$this->redirect('/product');
+       // return redirect()->route('dashboard');
+       return $this->redirect('/', navigate: true);
     }
 }

@@ -1,0 +1,270 @@
+
+<!-- saved from url=(0036)http://127.0.0.1:8000/product/create -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>[wire\:loading], [wire\:loading\.delay], [wire\:loading\.inline-block], [wire\:loading\.inline], [wire\:loading\.block], [wire\:loading\.flex], [wire\:loading\.table], [wire\:loading\.grid], [wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short], [wire\:loading\.delay\.long], [wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest] {display:none;}[wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}</style>
+
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Document_files/styles.css">
+    <link rel="stylesheet" href="./Document_files/all.css">
+    <link href="./Document_files/css" rel="stylesheet">
+    <script type="module" src="./Document_files/client" data-navigate-track="reload"></script><link rel="stylesheet" href="./Document_files/app.css" data-navigate-track="reload"><style>/* Make clicks pass-through */
+    #nprogress {
+      pointer-events: none;
+    }
+
+    #nprogress .bar {
+    //   background: #FC70A9;
+      background: #29d;
+
+      position: fixed;
+      z-index: 1031;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 2px;
+    }
+
+    /* Fancy blur effect */
+    #nprogress .peg {
+      display: block;
+      position: absolute;
+      right: 0px;
+      width: 100px;
+      height: 100%;
+      box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+      opacity: 1.0;
+
+      -webkit-transform: rotate(3deg) translate(0px, -4px);
+          -ms-transform: rotate(3deg) translate(0px, -4px);
+              transform: rotate(3deg) translate(0px, -4px);
+    }
+
+    /* Remove these to get rid of the spinner */
+    #nprogress .spinner {
+      display: block;
+      position: fixed;
+      z-index: 1031;
+      top: 15px;
+      right: 15px;
+    }
+
+    #nprogress .spinner-icon {
+      width: 18px;
+      height: 18px;
+      box-sizing: border-box;
+
+      border: solid 2px transparent;
+      border-top-color: #29d;
+      border-left-color: #29d;
+      border-radius: 50%;
+
+      -webkit-animation: nprogress-spinner 400ms linear infinite;
+              animation: nprogress-spinner 400ms linear infinite;
+    }
+
+    .nprogress-custom-parent {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .nprogress-custom-parent #nprogress .spinner,
+    .nprogress-custom-parent #nprogress .bar {
+      position: absolute;
+    }
+
+    @-webkit-keyframes nprogress-spinner {
+      0%   { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+    @keyframes nprogress-spinner {
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    </style></head>
+<body>
+<div class="mx-auto bg-grey-400">
+    <!--Screen-->
+    <div class="min-h-screen flex flex-col">
+        <!--Header Section Starts Here-->
+        <header class="bg-nav">
+            <div class="flex justify-between">
+                <div class="p-1 mx-3 inline-flex items-center">
+                    <i class="fas fa-bars pr-2 text-white" onclick="sidebarToggle()"></i>
+                    <h1 class="text-white p-2" wire:click="$route(&#39;/&#39;)">Logo</h1>
+                </div>
+                <div class="p-1 flex flex-row items-center">
+                    <a href="https://github.com/tailwindadmin/admin" class="text-white p-2 mr-2 no-underline hidden md:block lg:block">Github</a>
+
+
+                    <img onclick="profileToggle()" class="inline-block h-8 w-8 rounded-full" src="./Document_files/4323180" alt="">
+                    <a href="http://127.0.0.1:8000/product/create#" onclick="profileToggle()" class="text-white p-2 no-underline hidden md:block lg:block">User</a>
+                    <div id="ProfileDropDown" class="rounded hidden shadow-md bg-white absolute pin-t mt-12 mr-1 pin-r">
+                        <ul class="list-reset">
+                          <li><a href="http://127.0.0.1:8000/product/create#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">My account</a></li>
+                          <li><a href="http://127.0.0.1:8000/product/create#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">Notifications</a></li>
+                          <li><hr class="border-t mx-2 border-grey-ligght"></li>
+                          <li><a href="http://127.0.0.1:8000/product/create#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--/Header-->
+        <div class="flex flex-1">
+        <!--Sidebar-->
+   <aside wire:snapshot="{&quot;data&quot;:[],&quot;memo&quot;:{&quot;id&quot;:&quot;YsAYVXFoVJeeojyUlM8r&quot;,&quot;name&quot;:&quot;components.sidebar&quot;,&quot;path&quot;:&quot;product\/create&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;children&quot;:[],&quot;lazyLoaded&quot;:true,&quot;errors&quot;:[],&quot;locale&quot;:&quot;en&quot;},&quot;checksum&quot;:&quot;ab349bf2448939f75cddcd278554adcaf368a17e2bc30d0e376ce9278a3c8050&quot;}" wire:effects="[]" wire:id="YsAYVXFoVJeeojyUlM8r" id="sidebar" class="bg-side-nav w-1/2 md:w-1/6 lg:w-1/6 border-r border-side-nav hidden md:block lg:block">
+
+<ul class="list-reset flex flex-col">
+    <li class=" w-full h-full py-3 px-2 border-b border-light-border bg-white ">
+        <a href="http://127.0.0.1:8000/" class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+            <i class="fas fa-tachometer-alt float-left mx-2"></i>
+            Dashboard
+            <span><i class="fas fa-angle-right float-right"></i></span>
+        </a>
+    </li>
+    <li class="w-full h-full py-3 px-2 border-b border-light-border ">
+        <a href="http://127.0.0.1:8000/product" class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+            <i class="fab fa-wpforms float-left mx-2"></i>
+            Products
+            <span><i class="fa fa-angle-right float-right"></i></span>
+        </a>
+    </li>
+    <!-- <li class="w-full h-full py-3 px-2 border-b border-light-border">
+        <a href="buttons.html"
+           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+            <i class="fas fa-grip-horizontal float-left mx-2"></i>
+            Buttons
+            <span><i class="fa fa-angle-right float-right"></i></span>
+        </a>
+    </li>
+    <li class="w-full h-full py-3 px-2 border-b border-light-border">
+        <a href="tables.html"
+           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+            <i class="fas fa-table float-left mx-2"></i>
+            Tables
+            <span><i class="fa fa-angle-right float-right"></i></span>
+        </a>
+    </li>
+    <li class="w-full h-full py-3 px-2 border-b border-light-border">
+        <a href="ui.html"
+           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+            <i class="fab fa-uikit float-left mx-2"></i>
+            Ui components
+            <span><i class="fa fa-angle-right float-right"></i></span>
+        </a>
+    </li>
+    <li class="w-full h-full py-3 px-2 border-b border-300-border">
+        <a href="modals.html" class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+            <i class="fas fa-square-full float-left mx-2"></i>
+            Modals
+            <span><i class="fa fa-angle-right float-right"></i></span>
+        </a>
+    </li>
+    <li class="w-full h-full py-3 px-2">
+        <a href="#"
+           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+            <i class="far fa-file float-left mx-2"></i>
+            Pages
+            <span><i class="fa fa-angle-down float-right"></i></span>
+        </a>
+        <ul class="list-reset -mx-2 bg-white-medium-dark">
+            <li class="border-t mt-2 border-light-border w-full h-full px-2 py-3">
+                <a href="login.html"
+                   class="mx-4 font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                    Login Page
+                    <span><i class="fa fa-angle-right float-right"></i></span>
+                </a>
+            </li>
+            <li class="border-t border-light-border w-full h-full px-2 py-3">
+                <a href="register.html"
+                   class="mx-4 font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                    Register Page
+                    <span><i class="fa fa-angle-right float-right"></i></span>
+                </a>
+            </li>
+            <li class="border-t border-light-border w-full h-full px-2 py-3">
+                <a href="404.html"
+                   class="mx-4 font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                    404 Page
+                    <span><i class="fa fa-angle-right float-right"></i></span>
+                </a>
+            </li>
+        </ul>
+    </li> -->
+</ul>
+
+</aside>
+<!--/Sidebar-->
+
+
+            <!--Main-->
+            <main class="bg-white-300 flex-1 p-3 overflow-hidden">
+
+                <div class="flex flex-col">
+                <div wire:snapshot="{&quot;data&quot;:{&quot;photo&quot;:null,&quot;name&quot;:&quot;&quot;,&quot;price&quot;:&quot;&quot;},&quot;memo&quot;:{&quot;id&quot;:&quot;Q2StExPM9wB9v1CLc0rv&quot;,&quot;name&quot;:&quot;product.product&quot;,&quot;path&quot;:&quot;product\/create&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;children&quot;:[],&quot;lazyLoaded&quot;:true,&quot;errors&quot;:[],&quot;locale&quot;:&quot;en&quot;},&quot;checksum&quot;:&quot;b4e06cc1bca6c17cfa385fe7a1ece4ab86b118feae78e89595bbe49a08ab2fe8&quot;}" wire:effects="[]" wire:id="Q2StExPM9wB9v1CLc0rv">
+    <div class="flex flex-1  flex-col md:flex-row lg:flex-row mx-2">
+        <div class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full">
+            <div class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b flex justify-between items-center">
+                Product
+                <a class="bg-gray-600 text-white px-5 py-1 rounded-2xl shadow-lg border border-spacing-2" href="http://127.0.0.1:8000/product"> Back </a>
+            </div>
+            <div class="p-3">
+                <form class="w-full" wire:submit="save">
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1" for="grid-first-name">
+                                Name
+                            </label>
+                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500" wire:model="name" id="grid-first-name" type="text">
+                            <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+                                                    </div>
+                        <div class="w-full md:w-1/2 px-3">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1" for="grid-last-name">
+                                Price
+                            </label>
+                            <input class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600" id="grid-last-name" type="number" wire:model="price">
+                                                    </div>
+                    </div>
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <!--  -->
+                        <div class="w-full px-3">
+                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1" for="grid-password">
+                                Image
+                            </label>
+                            <input class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-grey" id="grid-password" type="file" wire:model="photo">
+                            <p class="text-grey-dark text-xs italic"></p>
+                        </div>
+                    </div>
+                    <div class="md:flex md:items-center">
+                        <div class="md:w-1/3"></div>
+                        <div class="md:w-2/3">
+                            <button class="shadow bg-gray-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                                Sign Up
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+            </main>
+            <!--/Main-->
+        </div>
+        <!--Footer-->
+        <footer class="bg-grey-darkest text-white p-2">
+            <div class="flex flex-1 mx-auto">© My Design</div>
+        </footer>
+        <!--/footer-->
+
+    </div>
+
+</div>
+<script src="./Document_files/main.js"></script>
+
+
+<script src="./Document_files/livewire.js" data-csrf="PKgucmJetRFQK4VQ1nfe1CPpZ7zJRhMuSwz1IaA7" data-uri="/livewire/update" data-navigate-once="true"></script></body><!-- Livewire Scripts --></html>
