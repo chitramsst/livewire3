@@ -8,6 +8,7 @@
         <div class="font-bold text-xl">Trending Categories</div>
         <a class="bg-red-800 text-white px-5 py-1 rounded-2xl shadow-lg border border-spacing-2" href="{{route('product.create')}}"> Create </a>
     </div>
+    <!-- <input wire:model.live="search"> -->
     <div class="table-responsive">
         <table class="table text-grey-darkest">
             <thead class="bg-grey-dark text-white text-normal">
@@ -35,7 +36,7 @@
                         Twitter
                     </button>
                 </td> -->
-                <td>{{$row->name}}</td>
+                <td wire:transition.opacity.duration.2500ms>{{$row->name}}</td>
                 <td>{{ $row->price }}</td>
                 <td>
                     <span class="text-green-500">{{ ($row->is_active==1) ? 'Active' : 'Inactive'}}</span>
