@@ -12,7 +12,7 @@ class Product extends Component
 {
     use WithFileUploads;
  
-    #[Rule('image|max:1024')] // 1MB Max
+    #[Rule('nullable | image|max:1024')] // 1MB Max
     public $photo;
  
     #[Rule('required')] 
@@ -44,8 +44,6 @@ class Product extends Component
         }
         $product->price = $this->price;
         $product->save();
-        //$this->redirect('/product');
-       // return redirect()->route('dashboard');
-       return $this->redirect('/', navigate: true);
+       return $this->redirect('/product');
     }
 }

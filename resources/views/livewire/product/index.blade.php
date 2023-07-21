@@ -6,7 +6,7 @@
   
 <div class="px-6 py-2 border-b border-light-grey flex items-center justify-between">
         <div class="font-bold text-xl">Trending Categories</div>
-        <a class="bg-gray-600 text-white px-5 py-1 rounded-2xl shadow-lg border border-spacing-2" href="{{route('product.create')}}"> Create </a>
+        <a class="bg-red-800 text-white px-5 py-1 rounded-2xl shadow-lg border border-spacing-2" href="{{route('product.create')}}"> Create </a>
     </div>
     <div class="table-responsive">
         <table class="table text-grey-darkest">
@@ -14,9 +14,9 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Item</th>
-                <th scope="col">Last</th>
-                <th scope="col">Current</th>
-                <th scope="col">Change</th>
+                <th scope="col">Item</th>
+                <th scope="col">Price</th>
+                <th scope="col">Status</th>
             </tr>
             </thead>
             <tbody>
@@ -38,7 +38,7 @@
                 <td>{{$row->name}}</td>
                 <td>{{ $row->price }}</td>
                 <td>
-                    <span class="text-green-500"><i class="fas fa-arrow-up"></i>5%</span>
+                    <span class="text-green-500">{{ ($row->is_active==1) ? 'Active' : 'Inactive'}}</span>
                 </td>
             </tr>
             @endforeach
