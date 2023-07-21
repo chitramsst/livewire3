@@ -8,6 +8,7 @@
 <body>
   <h1 class="text-3xl font-bold underline text-green-200">
     Hello world!
+    <button wire:click="save">ss</button>
   </h1>
 </body>
 </html>

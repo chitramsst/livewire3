@@ -18,7 +18,7 @@
             <div class="flex justify-between">
                 <div class="p-1 mx-3 inline-flex items-center">
                     <i class="fas fa-bars pr-2 text-white" onclick="sidebarToggle()"></i>
-                    <h1 class="text-white p-2">Logo</h1>
+                    <h1 class="text-white p-2" wire:click="$route('/')">Logo</h1>
                 </div>
                 <div class="p-1 flex flex-row items-center">
                     <a href="https://github.com/tailwindadmin/admin" class="text-white p-2 mr-2 no-underline hidden md:block lg:block">Github</a>
@@ -40,12 +40,11 @@
         <!--/Header-->
 
         <div class="flex flex-1">
-         <livewire:components.sidebar>
             <!--Main-->
             <main class="bg-white-300 flex-1 p-3 overflow-hidden">
 
                 <div class="flex flex-col">
-                {{$slot}}
+                {{ $slot }}
                 </div>
             </main>
             <!--/Main-->

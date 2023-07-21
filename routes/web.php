@@ -2,7 +2,9 @@
 
 use App\Http\Livewire\Dashboard;
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Product\Index;
+use App\Http\Livewire\Test;
+use App\Livewire\Product\Product;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +20,7 @@ use App\Http\Livewire\Product\Index;
 //     return view('welcome');
 // });
 
+Route::get('/',Test::class);
+
 Route::get('/',Dashboard::class);
-Route::group(['prefix'=>'products'],function(){
-  Route::get('/',Index::class);
-});
+Route::get('/product',Product::class);
