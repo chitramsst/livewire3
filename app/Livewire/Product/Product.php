@@ -12,7 +12,7 @@ class Product extends Component
 {
     use WithFileUploads;
  
-    #[Rule('nullable | image|max:1024')] // 1MB Max
+    #[Rule('nullable | image|max:1024')] 
     public $photo;
  
     #[Rule('required')] 
