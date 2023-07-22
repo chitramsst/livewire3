@@ -28,18 +28,18 @@
 
                         <div class="relative" x-data="{ isOpen: false}">
                             <div class="w-18 justify-between  items-center flex flex-row" @click="isOpen = !isOpen" @keydown.escape="isOpen = false">
-                        <img  onclick="profileToggle()" class="inline-block h-8 w-8 rounded-full" src="https://avatars0.githubusercontent.com/u/4323180?s=460&v=4" alt="">
-                        <a href="#"  class="text-white p-2 no-underline hidden md:block lg:block">User</a>
-                        <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <img onclick="profileToggle()" class="inline-block h-8 w-8 rounded-full" src="https://avatars0.githubusercontent.com/u/4323180?s=460&v=4" alt="">
+                                <a href="#" class="text-white p-2 no-underline hidden md:block lg:block">User</a>
+                                <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                                     <path d="M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z" class="heroicon-ui"></path>
                                 </svg>
-                            <!-- <button @click="isOpen = !isOpen" @keydown.escape="isOpen = false" class="flex items-center">
+                                <!-- <button @click="isOpen = !isOpen" @keydown.escape="isOpen = false" class="flex items-center">
                                 <img src="http://www.gravatar.com/avatar?d=mm" alt="avatar" class="w-8 h-8 rounded-full">
                                 <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                                     <path d="M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z" class="heroicon-ui"></path>
                                 </svg>
                             </button> -->
-</div>
+                            </div>
                             <ul x-show="isOpen" @click.away="isOpen = false" class="absolute font-normal bg-white shadow overflow-hidden rounded w-48 border mt-2 py-1 right-0 z-20">
                                 <li>
                                     <a href="#" class="flex items-center px-3 py-3 hover:bg-gray-200">
@@ -48,7 +48,7 @@
                                         </svg>
                                         <span class="ml-2">Account</span>
                                     </a>
-                                    
+
                                 </li>
                                 <li class="border-b border-gray-400">
                                     <a href="#" class="flex items-center px-3 py-3 hover:bg-gray-200">
