@@ -4,9 +4,9 @@ namespace App\Livewire\Product;
 
 use App\Models\Product;
 use Livewire\Component;
+use Session;
 
-/* https://webmobtuts.com/backend-development/creating-a-shopping-cart-with-laravel/ */
-
+// https://www.itsolutionstuff.com/post/laravel-shopping-add-to-cart-with-ajax-exampleexample.html
 class Index extends Component
 {
     public $items;
@@ -19,34 +19,25 @@ class Index extends Component
         return view('livewire.product.index');
     }
 
+    /* add cart data */
     public function addToCart($row)
     {
-        $cart = session()->get('cart');
-        if (!$cart) {
-            $cart = [
-                $row['id'] => [
-                    'product_id' => $row['id'],
-                    'product_name' => $row['name'],
-                    'product_quantity' => 1,
-                    'product_price' => $row['price']
-                ]
-            ];
-            session()->put('cart', $cart);
-        } else {
-            if (isset($cart[$row['id']])) {
-                $cart[$row['id']]['product_quantity']++;
-                session()->put('cart', $cart);
-            } else {
-                $cart[$row['id']] = [
-                    'product_id' => $row['id'],
-                    'product_name' => $row['name'],
-                    'product_quantity' => 1,
-                    'product_price' => $row['price']
-                ];
-                session()->put('cart', $cart);
-            }
+        $cart = session()->get('cart', []);
+        $id = $row['id'];
+        $cart = session()->get('cart', []);
+        if (isset($cart[$id])) {
 
-            dd(session()->get('cart'));
+            $cart[$id]['product_quantity']++;
+        } else {
+            $cart[$id] = [
+                'product_id' => $row['id'],
+                'product_name' => $row['name'],
+                'product_quantity' => 1,
+                'product_price' => $row['price']
+            ];
         }
+        session()->put('cart', $cart);
+        //dd(session()->get('cart',[]));
+        return redirect('product');
     }
 }
