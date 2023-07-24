@@ -10,4 +10,12 @@ class Cart extends Component
     {
         return view('livewire.cart.cart');
     }
+    public function removeItem($id){
+       $cart = session()->get('cart',[]);
+       if(isset($cart[$id])) {
+        unset($cart[$id]);
+       }
+       $this->dispatch('updateCartHeader');
+       session()->put('cart',$cart);
+    }
 }
