@@ -1,50 +1,108 @@
-<div>
-    
-<table id="cart" class="table table-hover table-condensed">
-        <thead>
-        <tr>
-            <th style="width:50%">Product</th>
-            <th style="width:10%">Price</th>
-            <th style="width:8%">Quantity</th>
-            <th style="width:22%" class="text-center">Subtotal</th>
-            <th style="width:10%"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php $total = 0 ?>
-        @if(session('cart'))
+<div class="m-5 ">
+    <div class="ml-24 flex flex-row my-5 font-mono font-extralight"> <span> Home / </span> <span class="text-red-500 px-3"> Cart </span></div>
+    <div class="flex flex-row marign-2 space-x-24">
+
+        <div class="w-[70%] h-full ml-24">
+            <?php $total = 0 ?>
+            @if(session('cart'))
             @foreach(session('cart') as $id => $details)
-                <?php $total += $details['product_price'] * $details['product_quantity'] ?>
-                <tr>
-                    <td data-th="Product">
-                        <div class="row">
-                            <div class="col-sm-9">
-                                <h4 class="nomargin">{{ $details['product_name'] }}</h4>
-                            </div>
-                        </div>
-                    </td> 
-                    <td data-th="Price">${{ $details['product_price'] }}</td>
-                    <td data-th="Quantity">
-                        <input type="number" value="{{ $details['product_quantity'] }}" class="form-control quantity" />
-                    </td>
-                    <td data-th="Subtotal" class="text-center">${{ $details['product_price'] * $details['product_quantity'] }}</td>
-                    <td class="actions" data-th="">
-                        <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i class="fa fa-refresh"></i></button>
-                        <button class="btn btn-danger btn-sm remove-from-cart" data-id="{{ $id }}"><i class="fa fa-trash-o"></i></button>
-                    </td>
-                </tr>
+            <?php $total += $details['product_price'] * $details['product_quantity'] ?>
+            <div class="flex flex-row justify-between items-center h-36 border-t-[0.5px]  border-gray-200 ">
+                <div class="col-sm-9 flex space-x-5 items-center w-[30%]">
+                    @if($details['product_image_url'])
+                    <img src="{{$details['product_image_url']}}" class="w-24 h-24 rounded-lg border-1  shadow-lg p-2" />
+                    @else
+                    <img src="{{ asset('assets/icon-no-image.svg') }}" class="w-24 h-24 rounded-lg border-1 shadow-lg p-2" />
+                    @endif
+                    <h4 class="nomargin">{{ $details['product_name'] }}</h4>
+                </div>
+                <span class="w-[15%]">
+                    <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                        <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                            <span class="m-auto text-2xl font-thin">−</span>
+                        </button>
+                        <input type="number" class="bg-gray-200 outline-none focus:outline-none text-center w-full  font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700" name="custom-input-number" value="{{ $details['product_quantity'] }}"></input>
+                        <button data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                            <span class="m-auto text-2xl font-thin">+</span>
+                        </button>
+                    </div>
+                </span>
+                <span class="text-center w-[10%]">${{ $details['product_price'] }}</span>
+                <span class="text-center w-[10%]" wire:click="removeItem({{$details['product_id}})"><i class="fa fa-trash" aria-hidden="true"></i></span>
+            </div>
             @endforeach
-        @endif
-        </tbody>
-        <tfoot>
-        <tr class="visible-xs">
-            <td class="text-center"><strong>Total {{ $total }}</strong></td>
-        </tr>
-        <tr>
-            <td><a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-            <td colspan="2" class="hidden-xs"></td>
-            <td class="hidden-xs text-center"><strong>Total ${{ $total }}</strong></td>
-        </tr>
-        </tfoot>
-    </table>
-</div>
+            @endif
+            <div class="border-t-[0.5px]  border-gray-200 "></div>
+
+            <div class="text-black/20 mt-20"><a href="{{ url('/product') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></div>
+
+                <!-- <div>
+                <td><a href="{{ url('/product') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+                <td colspan="2" class="hidden-xs"></td>
+            </div> -->
+            </div>
+            <div class="w-[30%] h-80 bg-gray-300 p-5 rounded-md">
+                <h1 class="font-bold text-lg"> Summary </h1>
+
+                @php $total = 0 @endphp
+                @if(session('cart'))
+                @foreach(session('cart') as $id => $details)
+                @php $total += $details['product_price'] * $details['product_quantity'] @endphp
+                @endforeach
+                @endif
+                <div class="flex flex-row justify-between items-center m-5 text-black/40 text-sm">
+                    <span> Sub Total </span>
+                    <span> $ {{ $total }} </span>
+                </div>
+                <div class="flex flex-row justify-between items-center m-5 text-black/40 text-sm">
+                    <span> Shipping Charges </span>
+                    <span> $ 0 </span>
+                </div>
+                <div class="border border-dashed border-black/20"> </div>
+                <div class="flex flex-row justify-between items-center m-5">
+                    <span> Total </span>
+                    <span> $ {{ $total }} </span>
+                </div>
+                <div class="border border-dashed border-black/20"> </div>
+            </div>
+        </div>
+        <div class="text-black/20 text-right -mt-5"><a href="{{ url('/product') }}" class="btn btn-warning bg-red-700 p-3 rounded-lg text-white border-red-500 border hover:bg-red-800 text-bold  border-spacing-2 border-1 shadow-xl"> Checkout</a></div>
+
+    </div>
+    <!-- <script>
+    function decrement(e) {
+        const btn = e.target.parentNode.parentElement.querySelector(
+            'button[data-action="decrement"]'
+        );
+        const target = btn.nextElementSibling;
+        let value = Number(target.value);
+        value--;
+        target.value = value;
+    }
+
+    function increment(e) {
+        const btn = e.target.parentNode.parentElement.querySelector(
+            'button[data-action="decrement"]'
+        );
+        const target = btn.nextElementSibling;
+        let value = Number(target.value);
+        value++;
+        target.value = value;
+    }
+
+    const decrementButtons = document.querySelectorAll(
+        `button[data-action="decrement"]`
+    );
+
+    const incrementButtons = document.querySelectorAll(
+        `button[data-action="increment"]`
+    );
+
+    decrementButtons.forEach(btn => {
+        btn.addEventListener("click", decrement);
+    });
+
+    incrementButtons.forEach(btn => {
+        btn.addEventListener("click", increment);
+    });
+</script> -->

@@ -22,7 +22,6 @@ class Index extends Component
     /* add cart data */
     public function addToCart($row)
     {
-        $cart = session()->get('cart', []);
         $id = $row['id'];
         $cart = session()->get('cart', []);
         if (isset($cart[$id])) {
@@ -33,7 +32,8 @@ class Index extends Component
                 'product_id' => $row['id'],
                 'product_name' => $row['name'],
                 'product_quantity' => 1,
-                'product_price' => $row['price']
+                'product_price' => $row['price'],
+                'product_image_url' => $row['image_url']
             ];
         }
         session()->put('cart', $cart);
