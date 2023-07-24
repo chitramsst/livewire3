@@ -18,4 +18,20 @@ class Cart extends Component
        $this->dispatch('updateCartHeader');
        session()->put('cart',$cart);
     }
+
+    public function incrementProductQuantity($id){
+        $cart = session()->get('cart',[]);
+        if(isset($cart[$id])) {
+          $cart[$id]['product_quantity']++;
+        }
+        session()->put('cart',$cart);
+    }
+
+    public function decrementProductQuantity($id){
+        $cart = session()->get('cart',[]);
+        if(isset($cart[$id])) {
+          $cart[$id]['product_quantity']--;
+        }
+        session()->put('cart',$cart);
+    }
 }

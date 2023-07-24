@@ -18,11 +18,11 @@
                 </div>
                 <span class="w-[15%]">
                     <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
-                        <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                        <button wire:click="decrementProductQuantity({{$id}})" data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
                             <span class="m-auto text-2xl font-thin">−</span>
                         </button>
                         <input type="number" class="bg-gray-200 outline-none focus:outline-none text-center w-full  font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700" name="custom-input-number" value="{{ $details['product_quantity'] }}"></input>
-                        <button data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                        <button wire:click="incrementProductQuantity({{$id}})" data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
                             <span class="m-auto text-2xl font-thin">+</span>
                         </button>
                     </div>
@@ -36,39 +36,44 @@
 
             <div class="text-black/20 mt-20"><a href="{{ url('/product') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></div>
 
-                <!-- <div>
+            <!-- <div>
                 <td><a href="{{ url('/product') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
                 <td colspan="2" class="hidden-xs"></td>
             </div> -->
-            </div>
-            <div class="w-[30%] h-80 bg-gray-300 p-5 rounded-md">
-                <h1 class="font-bold text-lg"> Summary </h1>
-
-                @php $total = 0 @endphp
-                @if(session('cart'))
-                @foreach(session('cart') as $id => $details)
-                @php $total += $details['product_price'] * $details['product_quantity'] @endphp
-                @endforeach
-                @endif
-                <div class="flex flex-row justify-between items-center m-5 text-black/40 text-sm">
-                    <span> Sub Total </span>
-                    <span> $ {{ $total }} </span>
-                </div>
-                <div class="flex flex-row justify-between items-center m-5 text-black/40 text-sm">
-                    <span> Shipping Charges </span>
-                    <span> $ 0 </span>
-                </div>
-                <div class="border border-dashed border-black/20"> </div>
-                <div class="flex flex-row justify-between items-center m-5">
-                    <span> Total </span>
-                    <span> $ {{ $total }} </span>
-                </div>
-                <div class="border border-dashed border-black/20"> </div>
-            </div>
         </div>
-        <div class="text-black/20 text-right -mt-5"><a href="{{ url('/product') }}" class="btn btn-warning bg-red-700 p-3 rounded-lg text-white border-red-500 border hover:bg-red-800 text-bold  border-spacing-2 border-1 shadow-xl"> Checkout</a></div>
+        <div class="w-[30%] h-80 bg-gray-300 p-5 rounded-md">
+            <div>
+            <h1 class="font-bold text-lg"> Summary </h1>
+            <div class="flex flex-col h-full w-full">
+                <div>
+                    @php $total = 0 @endphp
+                    @if(session('cart'))
+                    @foreach(session('cart') as $id => $details)
+                    @php $total += $details['product_price'] * $details['product_quantity'] @endphp
+                    @endforeach
+                    @endif
+                    <div class="flex flex-row justify-between items-center m-5 text-black/40 text-sm">
+                        <span> Sub Total </span>
+                        <span> $ {{ $total }} </span>
+                    </div>
+                    <div class="flex flex-row justify-between items-center m-5 text-black/40 text-sm">
+                        <span> Shipping Charges </span>
+                        <span> $ 0 </span>
+                    </div>
+                    <div class="border border-dashed border-black/20"> </div>
+                    <div class="flex flex-row justify-between items-center m-5">
+                        <span> Total </span>
+                        <span> $ {{ $total }} </span>
+                    </div>
+                    <div class="border border-dashed border-black/20"> </div>
+                </div>
+            </div>
+            </div>
+    <div class="text-black/20 text-right mt-24"><a href="{{ url('/product') }}" class="btn btn-warning bg-red-700 p-3 rounded-lg text-white border-red-500 border hover:bg-red-800 text-bold  border-spacing-2 border-1 shadow-xl"> Checkout</a></div>
 
+        </div>
     </div>
+
     <!-- <script>
     function decrement(e) {
         const btn = e.target.parentNode.parentElement.querySelector(
