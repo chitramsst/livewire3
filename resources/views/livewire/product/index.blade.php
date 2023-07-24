@@ -1,11 +1,11 @@
-<div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2 mt-2">
+<div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-24  mt-10">
 
     <!-- card -->
 
     <div class="rounded overflow-hidden shadow bg-white mx-2 w-full">
 
         <div class="px-6 py-2 border-b border-light-grey flex items-center justify-between">
-            <div class="font-bold text-xl">Trending Categories</div>
+        <div class="flex flex-row font-mono font-extralight"> <span> Home / </span> <span class="text-red-500 px-3"> Product </span></div>
             <a class="bg-red-800 text-white px-5 py-1 rounded-2xl shadow-lg border border-spacing-2" href="{{route('product.create')}}"> Create </a>
         </div>
         <!-- <input wire:model.live="search"> -->

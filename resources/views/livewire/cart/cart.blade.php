@@ -69,6 +69,7 @@
                 </div>
             </div>
             </div>
+            
     <div class="text-black/20 text-right mt-24"><a href="{{ url('/product') }}" class="btn btn-warning bg-red-700 p-3 rounded-lg text-white border-red-500 border hover:bg-red-800 text-bold  border-spacing-2 border-1 shadow-xl"> Checkout</a></div>
 
         </div>
