@@ -28,7 +28,7 @@
                     </div>
                 </span>
                 <span class="text-center w-[10%]">${{ $details['product_price'] }}</span>
-                <span class="text-center w-[10%]" wire:click="removeItem({{$details['product_id}})"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                <span class="text-center w-[10%]" wire:click="removeItem({{$details['product_id']}})"><i class="fa fa-trash" aria-hidden="true"></i></span>
             </div>
             @endforeach
             @endif
