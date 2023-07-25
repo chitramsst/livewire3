@@ -44,16 +44,16 @@
                 <template x-for="(field,index) in fields">
                     <div class="flex flex-row w-full space-x-10 items-center justify-between">
                         <div class="w-[45%]">
-                            <select x-model="field.category_id" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500" >
+                            <select x-model="field.category_id" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500">
                                 <option value=""> Choose Category </option>
                                 <template x-for="item in $wire.categories" :key="item.id">
-                                    <option  :value="item.id" x-text="item.name" class="text-white" x-bind:id="item.id"> </option>
+                                    <option :value="item.id" x-text="item.name" class="text-white" x-bind:id="item.id"> </option>
                                 </template>
                             </select>
                             @error('category_id') <span class="error text-red-500">{{ $message }}</span> @enderror
                         </div>
                         <div class="w-[45%]">
-                            <input x-model="field.name" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"  id="grid-first-name" type="text">
+                            <input x-model="field.name" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500" id="grid-first-name" type="text">
                             @error('name') <span class="error text-red-500">{{ $message }}</span> @enderror
                         </div>
                         <div class="w-[45%]">
@@ -81,18 +81,37 @@
         return {
             fields: [],
             addNewField() {
-                this.fields.push({
-                    category_id: '',
-                    name: '',
-                    price: ''
-                });
+                if (this.fields.length == 0) {
+                    this.fields.push({
+                        category_id: '',
+                        name: '',
+                        price: ''
+                    });
+                } else {
+                    const count = this.fields.length-1;
+                    $item = this.fields;
+                    if(($item[count].name=="") || ($item[count].category_id=="") || ($item[count].price=="")) {
+                         const row = count+1;
+                          alert("please enter valid data of row "+ row);
+                    } else {
+                        this.fields.push({
+                        category_id: '',
+                        name: '',
+                        price: ''
+                    });
+                    }
+                }
             },
             removeField(index) {
                 this.fields.splice(index, 1);
             },
             getData() {
-                console.log(this.fields);
-                alert(this.fields);
+                if (this.fields.length <= 0) {
+                    alert("pls enter item");
+                }
+
+                console.log(this.fields.length);
+                //console.log(this.fields);
             }
         }
     }
