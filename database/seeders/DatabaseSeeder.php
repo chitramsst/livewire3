@@ -18,5 +18,15 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        $data = [
+            [
+                'name' => "category1",
+            ],
+            [
+                'name' => "category2",
+            ]
+        ];
+
+        \App\Models\Category::insert($data);
     }
 }
