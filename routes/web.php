@@ -5,6 +5,7 @@ use App\Livewire\Product\Index;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Product\Product;
 use App\Livewire\Cart\Cart;
+use App\Livewire\Service\ServiceIndex;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,4 @@ Route::get('/',Dashboard::class)->name('dashboard');
 Route::get('/product',Index::class)->name('product.list');
 Route::get('/product/create',Product::class)->name('product.create');
 Route::get('cart',Cart::class)->name('cart');
+Route::get('service',ServiceIndex::class)->name('service');

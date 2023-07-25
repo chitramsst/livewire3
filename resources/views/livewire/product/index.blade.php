@@ -5,7 +5,7 @@
     <div class="rounded overflow-hidden shadow bg-white mx-2 w-full">
 
         <div class="px-6 py-2 border-b border-light-grey flex items-center justify-between">
-        <div class="flex flex-row font-mono font-extralight"> <span> Home / </span> <span class="text-red-500 px-3"> Product </span></div>
+            <div class="flex flex-row font-mono font-extralight"> <span> Home / </span> <span class="text-red-500 px-3"> Product </span></div>
             <a class="bg-red-800 text-white px-5 py-1 rounded-2xl shadow-lg border border-spacing-2" href="{{route('product.create')}}"> Create </a>
         </div>
         <!-- <input wire:model.live="search"> -->
