@@ -12,7 +12,7 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1" for="grid-first-name">
                                 Name
                             </label>
-                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500" wire:model="name" id="grid-first-name" type="text">
+                            <input x-model="service_name" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500" wire:model="name" id="grid-first-name" type="text">
                             <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                             @error('name') <span class="error text-red-500">{{ $message }}</span> @enderror
                         </div>
@@ -22,28 +22,33 @@
                             ADD
                         </div>
                     </div>
-
                 </form>
             </div>
             <div class="border border-dashed my-3"></div>
             <div class="p-3 w-full">
                 <div class="flex flex-row w-full space-x-10 items-center justify-between">
-                    <div class="w-[45%]">
+                    <div class="w-[5%]">
+                    <span class="appearance-none text-center block w-full bg-gray-500 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"> # </span>
+                    </div>
+                    <div class="w-[30%]">
                         <span class="appearance-none text-center block w-full bg-gray-500 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"> Category </span>
                     </div>
-                    <div class="w-[45%]">
+                    <div class="w-[30%]">
                         <span class="appearance-none text-center block w-full bg-gray-500 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"> Name </span>
                     </div>
-                    <div class="w-[45%]">
+                    <div class="w-[30%]">
                         <span class="appearance-none text-center block w-full bg-gray-500 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"> Price </span>
                     </div>
-                    <div class="w-[10%]">
+                    <div class="w-[5%]">
 
                     </div>
                 </div>
                 <template x-for="(field,index) in fields">
                     <div class="flex flex-row w-full space-x-10 items-center justify-between">
-                        <div class="w-[45%]">
+                    <div class="w-[5%]">
+                        <span x-text="index+1" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500" id="grid-first-name"/>
+                    </div>
+                        <div class="w-[30%]">
                             <select x-model="field.category_id" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500">
                                 <option value=""> Choose Category </option>
                                 <template x-for="item in $wire.categories" :key="item.id">
@@ -52,15 +57,15 @@
                             </select>
                             @error('category_id') <span class="error text-red-500">{{ $message }}</span> @enderror
                         </div>
-                        <div class="w-[45%]">
+                        <div class="w-[30%]">
                             <input x-model="field.name" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500" id="grid-first-name" type="text">
                             @error('name') <span class="error text-red-500">{{ $message }}</span> @enderror
                         </div>
-                        <div class="w-[45%]">
+                        <div class="w-[30%]">
                             <input x-model="field.price" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500" id="grid-first-price" type="text">
                             @error('name') <span class="error text-red-500">{{ $message }}</span> @enderror
                         </div>
-                        <div class="w-[10%] text-center">
+                        <div class="w-[5%] text-center">
                             <button class="shadow  hover:bg-purple-400 focus:shadow-outline focus:outline-none text-red-900 font-bold py-2 px-4 rounded" @click="removeField(index)">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
                             </button>
@@ -80,6 +85,7 @@
     function handler() {
         return {
             fields: [],
+            service_name : '',
             addNewField() {
                 if (this.fields.length == 0) {
                     this.fields.push({
@@ -106,12 +112,24 @@
                 this.fields.splice(index, 1);
             },
             getData() {
-                if (this.fields.length <= 0) {
-                    alert("pls enter item");
-                }
 
-                console.log(this.fields.length);
-                //console.log(this.fields);
+                if(this.service_name=="") {
+                    alert("pls enter valid service name");
+                    return;
+                }
+                if (this.fields.length <= 0) {
+                    alert("pls enter  valid item data");
+                    return;
+                }
+                //every(this.fields)
+                this.fields.forEach(function(item,index){
+                    console.log(item.name);
+                    if((item.name=="") || (item.category_id=="") || (item.price=="")) {
+                         const row = index+1;
+                          alert("please enter valid data of row "+ row);
+                    } 
+                })
+
             }
         }
     }
