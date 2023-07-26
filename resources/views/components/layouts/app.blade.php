@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/styles.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/all.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i" rel="stylesheet">
+
     <style>
         input[type='number']::-webkit-inner-spin-button,
         input[type='number']::-webkit-outer-spin-button {
@@ -24,6 +25,8 @@
         }
     </style>
     @vite('resources/css/app.css')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     @stack('css')
 </head>
 
@@ -56,6 +59,7 @@
 
     </div>
     <script src="{{asset('assets/js/main.js')}}"></script>
+
 </body>
 
 </html>
