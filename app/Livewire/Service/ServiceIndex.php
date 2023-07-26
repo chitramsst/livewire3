@@ -22,9 +22,10 @@ class ServiceIndex extends Component
 
     public function save(){
        // $this->js('alert("js")');
-       $this->js(<<<'JS'
-            $wire.service_name = '';
-            Swal.fire("hey");
-       JS);
+    //    $this->js(<<<'JS'
+    //         $wire.service_name = '';
+    //         Swal.fire("hey");
+    //    JS);
+    $this->modal('test');
     }
 }
