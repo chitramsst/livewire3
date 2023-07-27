@@ -26,21 +26,7 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="w-1/2">
-            <h1>Status 2</h1>
-            <div x-data="handler()" @drop.prevent="items1=dragDropList(dragging, dropping,2)" @dragover.prevent="$event.dataTransfer.dropEffect = &quot;move&quot;">
-                <div class="list-group flex flex-col m-3 p-5 mb-3 bg-gray-300 space-y-5">
-                    <template x-for="(item, index) in items1" :key="index">
-                        <div class="position-relative list-group-item bg-gray-500 p-10" draggable="true" :class="{'border border-primary': dragging === index}" @dragstart="dragging = index" @dragend="dragging = null" x-on:drop=" dropping = index ">
-                            <div><i class="bi bi-grip-vertical"></i><span x-text="item"></span></a><button type="button" class="btn btn-outline-danger btn-sm float-end" aria-label="Delete" @click="items.splice(index, 1);"><i class="bi-trash"></i></button></div>
-                            <div class="position-absolute" style="top: 0; bottom: 0; right: 0; left: 0;" x-show.transition="dragging !== null" :class="{'bg-secondary': dropping === index}" @dragenter.prevent="if(index !== dragging) {dropping = index}" @dragleave="if(dropping === index) dropping = null"></div>
-                        </div>
-                    </template>
-                </div>
-            </div>
-        </div> -->
     </div>
-
     <hr>
 </div>
 <script>
