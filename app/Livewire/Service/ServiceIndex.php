@@ -9,7 +9,7 @@ use App\Models\Product;
 class ServiceIndex extends Component
 {
     public $categories;
-    public $service_name, $products = null;
+    public $service_name, $products=[];
     public $selectedIndex = null;
     public function render()
     {
@@ -17,11 +17,9 @@ class ServiceIndex extends Component
         return view('livewire.service.service-index');
     }
 
-    public function getProducts($id)
+    public function getProducts($id,$index)
     {
-        
-        $this->products = Product::where('id', $id)->latest()->get()->toArray();
-        //$this->selectedIndex = $index;
+        $this->products[$index] = Product::where('id', $id)->latest()->get()->toArray();
     }
 
     public function getCategories()

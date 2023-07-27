@@ -47,7 +47,7 @@
                             <span x-text="index+1" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500" id="grid-first-name" />
                         </div>
                         <div class="w-[30%]">
-                            <select @change="$wire.getProducts(field.category_id)" x-model="field.category_id" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500">
+                            <select @change="$wire.getProducts(field.category_id,index)" x-model="field.category_id" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500">
                                 <option value=""> Choose Category </option>
                                 <template x-for="(item,id) in $wire.categories" :key="item.id">
                                     <option  x-if="item.id!=NULL" :value="item.id" x-text="item['name']" class="text-white" x-bind:id="item.id" x-show="item.id"> </option>
@@ -59,7 +59,7 @@
                         <div class="w-[30%]">
                         <select x-model="field.name" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500">
                         <option value=""> Choose Product </option>
-                                <template x-for="item1 in $wire.products" :key="item1.id">
+                                <template x-for="item1 in $wire.products[index]" :key="item1.id" >
                                     <option :value="item1.id" x-text="item1.name" class="text-white" x-bind:id="item1.id" x-show="item1.id"> </option>
                                 </template>
                         </select>
