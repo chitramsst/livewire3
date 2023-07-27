@@ -5,7 +5,7 @@
             <template x-for="(item, index) in items" :key="index" >
                 <div class="position-relative list-group-item bg-gray-500 p-10" draggable="true" :class="{'border border-primary': dragging === index}" @dragstart="dragging = index" @dragend="dragging = null"  x-on:drop=" dropping = index ">
                     <div><i class="bi bi-grip-vertical"></i><span x-text="item"></span></a><button type="button" class="btn btn-outline-danger btn-sm float-end" aria-label="Delete" @click="items.splice(index, 1);"><i class="bi-trash"></i></button></div>
-                    <div class="position-absolute" style="top: 0; bottom: 0; right: 0; left: 0;" x-show.transition="dragging !== null" :class="{'bg-secondary': dropping === index}"></div>
+                    <div class="position-absolute" style="top: 0; bottom: 0; right: 0; left: 0;" x-show.transition="dragging !== null" :class="{'bg-secondary': dropping === index}" @dragenter.prevent="if(index !== dragging) {dropping = index}" @dragleave="if(dropping === index) dropping = null"></div>
                 </div>
             </template>
 
@@ -20,11 +20,8 @@
                 items: ['Chocolate', 'Vanilla', 'Strawberry', 'Cookies and Creme'],
                 newItem:'', dragging: null, dropping: null,
                 dragDropList(dragging, dropping) {
-                    alert(dropping)
                     if (dragging !== null && dropping !== null) {
-                        alert("tess");
                         if (dragging < dropping) {
-                            alert("yes");
                             this.items = [
                                 ...this.items.slice(0, dragging),
                                 ...this.items.slice(dragging + 1, dropping + 1),
@@ -32,7 +29,6 @@
                                 ...this.items.slice(dropping + 1)
                             ];
                         } else {
-                            alert("no")
                             this.items = [
                                 ...this.items.slice(0, dropping),
                                 this.items[dragging],
