@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Product\Product;
 use App\Livewire\Cart\Cart;
 use App\Livewire\DragDrop;
+use App\Livewire\DragDropTask;
 use App\Livewire\Service\ServiceIndex;
 
 /*
@@ -32,3 +33,4 @@ Route::get('cart',Cart::class)->name('cart');
 Route::get('service',ServiceIndex::class)->name('service');
 Route::get('/chat',Chat::class)->name('chat');
 Route::get('/drag-and-drop',DragDrop::class)->name('drag-and-drop');
+Route::get('/drag-and-drop-task',DragDropTask::class)->name('drag-and-drop-task');

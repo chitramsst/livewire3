@@ -8,7 +8,6 @@
                     <div class="position-absolute" style="top: 0; bottom: 0; right: 0; left: 0;" x-show.transition="dragging !== null" :class="{'bg-secondary': dropping === index}" @dragenter.prevent="if(index !== dragging) {dropping = index}" @dragleave="if(dropping === index) dropping = null"></div>
                 </div>
             </template>
-
             <!-- <div class="input-group mt-2"><input type="text" class="form-control form-inline" x-model="newItem"></input><button class="btn btn-primary form-inline" x-bind:disabled="newItem == ''" @click="items.push(newItem);newItem=''">Add Flavor</button></div> -->
         </div>
     </div>
