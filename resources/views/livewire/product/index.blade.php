@@ -8,7 +8,11 @@
             <div class="flex flex-row font-mono font-extralight"> <span> Home / </span> <span class="text-red-500 px-3"> Product </span></div>
             <a class="bg-red-800 text-white px-5 py-1 rounded-2xl shadow-lg border border-spacing-2" href="{{route('product.create')}}"> Create </a>
         </div>
-        <!-- <input wire:model.live="search"> -->
+        <div class="w-full flex justify-end">
+
+            <input class="mr-20 mt-2 appearance-none block bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500 w-32" placeholder="search here" wire:model.live="search" id="grid-first-name" type="text">
+            <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+        </div>
         <div class="table-responsive">
             <table class="table text-grey-darkest">
                 <thead class="bg-grey-dark text-white text-normal">

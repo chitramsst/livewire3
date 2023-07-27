@@ -10,13 +10,18 @@ use Session;
 class Index extends Component
 {
     public $items;
+    public $search;
 
     const MINIMUM_QUANTITY = 1;
 
     public function render()
     {
-        $this->items = Product::latest()->get();
+        $this->items = Product::where('name','like','%'.$this->search.'%')->latest()->get();
         return view('livewire.product.index');
+
+        // return view('livewire.product.index', [
+        //     'items' => Product::latest()->get(),
+        // ]);
     }
 
     /* add cart data */
