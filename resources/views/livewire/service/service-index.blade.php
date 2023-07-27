@@ -41,7 +41,7 @@
 
                     </div>
                 </div>
-                <template x-for="(field,index) in fields">
+                <template x-for="(field,index) in fields" >
                     <div class="flex flex-row w-full space-x-10 items-center justify-between">
                         <div class="w-[5%]">
                             <span x-text="index+1" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500" id="grid-first-name" />
@@ -49,7 +49,7 @@
                         <div class="w-[30%]">
                             <select @change="$wire.getProducts(field.category_id)" x-model="field.category_id" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500">
                                 <option value=""> Choose Category </option>
-                                <template x-for="(item,id) in $wire.categories" >
+                                <template x-for="(item,id) in $wire.categories" :key="item.id">
                                     <option  x-if="item.id!=NULL" :value="item.id" x-text="item['name']" class="text-white" x-bind:id="item.id" x-show="item.id"> </option>
                                 </template>
 
@@ -130,7 +130,7 @@
                         alert("please enter valid data of row " + row);
                     }
                 })
-                this.$wire.save();
+                this.$wire.save(this.fields,this.service_name);
             },
             checkServiceValidation() {
                 if (this.service_name == "") {
