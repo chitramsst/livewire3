@@ -5,6 +5,8 @@ namespace App\Livewire\Service;
 use Illuminate\Support\Js;
 use Livewire\Component;
 use App\Models\Product;
+use App\Models\Service;
+use App\Models\ServiceDetail;
 
 class ServiceIndex extends Component
 {
@@ -29,7 +31,20 @@ class ServiceIndex extends Component
 
     public function save($productList,$service_name)
     {
-        dd($productList);
+        
+         $service = new Service();
+         $service->service_name = $service_name;
+         $service->save();
+         
+         foreach($productList as $row) {
+            $detail = new ServiceDetail();
+            $detail->product_id = $row['name'];
+            $detail->price = $row['price'];
+            $detail->category_id = $row['category_id'];
+            $detail->service_id = $service->id;
+            $detail->save();
+         }
+
         //$this->modal("test");
         // $this->js('alert("js")');
         //    $this->js(<<<'JS'

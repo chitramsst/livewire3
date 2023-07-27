@@ -52,7 +52,6 @@
                                 <template x-for="(item,id) in $wire.categories" :key="item.id">
                                     <option  x-if="item.id!=NULL" :value="item.id" x-text="item['name']" class="text-white" x-bind:id="item.id" x-show="item.id"> </option>
                                 </template>
-
                             </select>
                             @error('category_id') <span class="error text-red-500">{{ $message }}</span> @enderror
                         </div>
