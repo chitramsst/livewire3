@@ -1,55 +1,66 @@
-<div class="container w-full">
+<div class="container w-full" x-data="handler()">
     <div class="flex flex-row space-x-10 m-3 p-2 w-full">
         <div class="w-1/2">
-            <h1>Drag and Drop</h1>
-            <div x-data="handler()" @drop.prevent="items=dragDropList(dragging, dropping)" @dragover.prevent="$event.dataTransfer.dropEffect = &quot;move&quot;">
-                <div class="list-group flex flex-col m-3 p-5 mb-3 bg-gray-300 space-y-5">
+            <h1>Staus 1</h1>
+            <div  @drop.prevent="dragDropList(dragIndex,dragFrom,1)" @dragover.prevent="$event.dataTransfer.dropEffect = &quot;move&quot;">
+                <div class="list-group flex flex-col m-3 p-5 mb-3 bg-gray-300 space-y-5 rounded-lg">
                     <template x-for="(item, index) in items" :key="index">
+                        <div x-on:drag=" dragIndex = index; dragFrom = 1 " class="position-relative list-group-item bg-gray-500 p-10 rounded-lg" draggable="true" :class="{'border border-primary': dragging === index}" @dragstart="dragging = index" @dragend="dragging = null" x-on:drop=" dropping = index ">
+                            <div><i class="bi bi-grip-vertical"></i><span x-text="item"></span></a><button type="button" class="btn btn-outline-danger btn-sm float-end" aria-label="Delete" @click="items.splice(index, 1);"><i class="bi-trash"></i></button></div>
+                            <div class="position-absolute" style="top: 0; bottom: 0; right: 0; left: 0;" x-show.transition="dragging !== null" :class="{'bg-secondary': dropping === index}" @dragenter.prevent="if(index !== dragging) {dropping = index}" @dragleave="if(dropping === index) dropping = null"></div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+        <div class="w-1/2">
+            <h1>Status2</h1>
+            <div  @drop.prevent="dragDropList(dragIndex,dragFrom,2)" @dragover.prevent="$event.dataTransfer.dropEffect = &quot;move&quot;">
+                <div class="list-group flex flex-col m-3 p-5 mb-3 bg-gray-300 space-y-5 rounded-lg">
+                    <template x-for="(item, index) in items1" :key="index">
+                        <div x-on:drag=" dragIndex = index; dragFrom = 2 " class="position-relative list-group-item bg-gray-500 p-10 rounded-lg" draggable="true" :class="{'border border-primary': dragging === index}" @dragstart="dragging = index" @dragend="dragging = null" x-on:drop=" dropping = index ">
+                            <div><i class="bi bi-grip-vertical"></i><span x-text="item"></span></a><button type="button" class="btn btn-outline-danger btn-sm float-end" aria-label="Delete" @click="items.splice(index, 1);"><i class="bi-trash"></i></button></div>
+                            <div class="position-absolute" style="top: 0; bottom: 0; right: 0; left: 0;" x-show.transition="dragging !== null" :class="{'bg-secondary': dropping === index}" @dragenter.prevent="if(index !== dragging) {dropping = index}" @dragleave="if(dropping === index) dropping = null"></div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="w-1/2">
+            <h1>Status 2</h1>
+            <div x-data="handler()" @drop.prevent="items1=dragDropList(dragging, dropping,2)" @dragover.prevent="$event.dataTransfer.dropEffect = &quot;move&quot;">
+                <div class="list-group flex flex-col m-3 p-5 mb-3 bg-gray-300 space-y-5">
+                    <template x-for="(item, index) in items1" :key="index">
                         <div class="position-relative list-group-item bg-gray-500 p-10" draggable="true" :class="{'border border-primary': dragging === index}" @dragstart="dragging = index" @dragend="dragging = null" x-on:drop=" dropping = index ">
                             <div><i class="bi bi-grip-vertical"></i><span x-text="item"></span></a><button type="button" class="btn btn-outline-danger btn-sm float-end" aria-label="Delete" @click="items.splice(index, 1);"><i class="bi-trash"></i></button></div>
                             <div class="position-absolute" style="top: 0; bottom: 0; right: 0; left: 0;" x-show.transition="dragging !== null" :class="{'bg-secondary': dropping === index}" @dragenter.prevent="if(index !== dragging) {dropping = index}" @dragleave="if(dropping === index) dropping = null"></div>
                         </div>
                     </template>
-                    <!-- <div class="input-group mt-2"><input type="text" class="form-control form-inline" x-model="newItem"></input><button class="btn btn-primary form-inline" x-bind:disabled="newItem == ''" @click="items.push(newItem);newItem=''">Add Flavor</button></div> -->
                 </div>
             </div>
-        </div>
-        <div class="w-1/2">
-345
-        </div>
+        </div> -->
     </div>
 
     <hr>
 </div>
 <script>
     function handler() {
-        return {
-            items: ['Chocolate', 'Vanilla', 'Strawberry', 'Cookies and Creme'],
-            newItem: '',
-            dragging: null,
-            dropping: null,
-            dragDropList(dragging, dropping) {
-                if (dragging !== null && dropping !== null) {
-                    if (dragging < dropping) {
-                        this.items = [
-                            ...this.items.slice(0, dragging),
-                            ...this.items.slice(dragging + 1, dropping + 1),
-                            this.items[dragging],
-                            ...this.items.slice(dropping + 1)
-                        ];
-                    } else {
-                        this.items = [
-                            ...this.items.slice(0, dropping),
-                            this.items[dragging],
-                            ...this.items.slice(dropping, dragging),
-                            ...this.items.slice(dragging + 1)
-                        ];
+            return {
+                items: ['Chocolate', 'Vanilla', 'Strawberry', 'Cookies and Creme'],
+                items1: [],
+                newItem:'', dragging: null, dropping: null,
+                dragDropList(dragIndex, drogFrom,location) {
+                    if(location==2) {
+                        this.items1.push(this.items[dragIndex]);
+                        this.items.splice(dragIndex,1);
+                        //this.items = [...this.items.splice(0,1)];
                     }
-                    // dropping = null;
+                    if(location==1) {
+                        this.items.push(this.items1[dragIndex]);
+                        this.items1.splice(dragIndex,1);
+                        //this.items = [...this.items.splice(0,1)];
+                    }
                 }
-
-                return this.items;
             }
         }
-    }
 </script>
