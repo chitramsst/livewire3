@@ -7,10 +7,16 @@ use Livewire\Component;
 class DragDrop extends Component
 {
     public $products;
-    
+
     public function render()
     {
         $this->products = \App\Models\Product::latest()->get();
         return view('livewire.drag-drop');
+    }
+
+    public function success(){
+            $this->js(<<<'JS'
+                Swal.fire("Success");
+           JS);
     }
 }
