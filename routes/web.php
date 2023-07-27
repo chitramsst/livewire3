@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Ai\Chat;
 use App\Livewire\Dashboard;
 use App\Livewire\Product\Index;
 use Illuminate\Support\Facades\Route;
@@ -28,3 +29,4 @@ Route::get('/product',Index::class)->name('product.list');
 Route::get('/product/create',Product::class)->name('product.create');
 Route::get('cart',Cart::class)->name('cart');
 Route::get('service',ServiceIndex::class)->name('service');
+Route::get('/chat',Chat::class)->name('chat');

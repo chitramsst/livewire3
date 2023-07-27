@@ -49,19 +49,20 @@
                         <div class="w-[30%]">
                             <select @change="$wire.getProducts(field.category_id)" x-model="field.category_id" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500">
                                 <option value=""> Choose Category </option>
-                                <template x-for="item in $wire.categories" :key="item.id">
-                                    <option :value="item.id" x-text="item.name" class="text-white" x-bind:id="item.id"> </option>
+                                <template x-for="(item,id) in $wire.categories" >
+                                    <option  x-if="item.id!=NULL" :value="item.id" x-text="item['name']" class="text-white" x-bind:id="item.id" x-show="item.id"> </option>
                                 </template>
+
                             </select>
                             @error('category_id') <span class="error text-red-500">{{ $message }}</span> @enderror
                         </div>
                         <div class="w-[30%]">
-                            <select x-model="field.name" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500">
-                                <option value=""> Choose Product </option>
+                        <select x-model="field.name" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500">
+                        <option value=""> Choose Product </option>
                                 <template x-for="item1 in $wire.products" :key="item1.id">
-                                    <option :value="item1.id" x-text="item1.name" class="text-white"> </option>
+                                    <option :value="item1.id" x-text="item1.name" class="text-white" x-bind:id="item1.id" x-show="item1.id"> </option>
                                 </template>
-                            </select>
+                        </select>
                         </div>
                         <div class="w-[30%]">
                             <input x-model="field.price" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500" id="grid-first-price" type="text">

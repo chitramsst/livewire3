@@ -31,5 +31,10 @@ class AppServiceProvider extends ServiceProvider
             Swal.fire('','{$text}','success');
        JS);
         });
+
+        Component::macro('confetti',function ($text = null) {
+            $object = $text ? '{ emojis: ["'.$text.'"] }':'';
+            $this->js("(new window.JSConfetti()).addConfetti('21323')");
+        });
     }
 }

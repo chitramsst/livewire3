@@ -34,6 +34,14 @@
             <span><i class="fa fa-angle-right float-right"></i></span>
         </a>
     </li>
+    <li class="w-full h-full py-5 px-2 border-b border-light-border {{ Request::is('/chat') ? '' : '' }}">
+        <a href="{{route('chat')}}" wire:navigate
+           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+           <i class="fa fa-wrench float-left mx-2" aria-hidden="true"></i>
+            Chat
+            <span><i class="fa fa-angle-right float-right"></i></span>
+        </a>
+    </li>
 </ul>
 
 </aside>
