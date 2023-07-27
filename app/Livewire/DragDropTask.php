@@ -10,4 +10,9 @@ class DragDropTask extends Component
     {
         return view('livewire.drag-drop-task');
     }
+    public function success(){
+        $this->js(<<<'JS'
+            Swal.fire('',"Success",'success');
+       JS);
+}
 }

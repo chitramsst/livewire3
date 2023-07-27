@@ -53,13 +53,12 @@
                     if(location==2) {
                         this.items1.push(this.items[dragIndex]);
                         this.items.splice(dragIndex,1);
-                        //this.items = [...this.items.splice(0,1)];
                     }
                     if(location==1) {
                         this.items.push(this.items1[dragIndex]);
                         this.items1.splice(dragIndex,1);
-                        //this.items = [...this.items.splice(0,1)];
                     }
+                    this.$wire.success();
                 }
             }
         }
