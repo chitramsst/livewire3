@@ -32,5 +32,6 @@ Route::get('/product/create',Product::class)->name('product.create');
 Route::get('cart',Cart::class)->name('cart');
 Route::get('service',ServiceIndex::class)->name('service');
 Route::get('/chat',Chat::class)->name('chat');
+Route::get('/chat/send',[Chat::class,'sendRequest'])->name('chat-send');
 Route::get('/drag-and-drop',DragDrop::class)->name('drag-and-drop');
 Route::get('/drag-and-drop-task',DragDropTask::class)->name('drag-and-drop-task');
