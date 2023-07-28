@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 class Chat extends Component
 {
     public $content, $text;
-    public $receivedContent="324";
+    public $receivedContent = "324";
     public function render()
     {
         return view('livewire.ai.chat');
@@ -30,8 +30,8 @@ class Chat extends Component
 
         // $this->content = trim($result['choices'][0]['text']);
 
-        $this->receivedContent = "345435";  
-        $this->content = "tourishm";
+        $this->receivedContent = "345435";
+        $this->content = "exam";
         // return response()->stream(function () {
         //     while (true) {
         //         $client = OpenAI::client('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');
@@ -61,7 +61,7 @@ class Chat extends Component
         //     'Cache-Control' => 'no-cache',
         //     'Content-Type' => 'text/event-stream',
         // ]);
-        $client = OpenAI::client('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');
+        $client = OpenAI::client('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');
 
         return response()->stream(function () use ($client) {
             $stream = $client->chat()->createStreamed([
@@ -69,17 +69,18 @@ class Chat extends Component
                 'messages' => [
                     ['role' => 'user', 'content' => $this->content],
                 ],
-                "frequency_penalty" => 0,
-                "presence_penalty" => 0,
-                'max_tokens' => 100,
-                'temperature'=>0.7,
                 
+                'temperature' => 0.9,
+                'max_tokens' => 50,
+                'frequency_penalty' => 0,
+                'presence_penalty' => 0.6,
+
             ]);
             foreach ($stream as $response) {
                 if (isset($response['choices'][0]['delta']['content'])) {
                     $message = $response['choices'][0]['delta']['content'];
                     echo PHP_EOL;
-                    echo 'data: ' . $message ;
+                    echo 'data: {"content": "'.$message.'"}';
                     echo "\n\n";
                     ob_flush();
                     flush();
@@ -89,7 +90,9 @@ class Chat extends Component
                     break;
                 }
             }
-            echo 'data: ' . '[DONE]' ;
+            //echo 'data: ' . '[DONE]';
+            $test = '[DONE]';
+            echo 'data: {"content": "' . $test . '"}';
             echo "\n\n";
             ob_flush();
             flush();
@@ -99,13 +102,12 @@ class Chat extends Component
             'X-Accel-Buffering' => 'no',
             'Content-Type' => 'text/event-stream',
         ]);
-
     }
 
     public function updated($name, $value)
     {
         dd("yes");
-        if($name=='receivedContent') {
+        if ($name == 'receivedContent') {
             $this->receivedContent = $value;
         }
     }

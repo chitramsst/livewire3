@@ -3,6 +3,8 @@
     <!-- https://api.openai.com/v1/models 
 Authorization and bearer tokens
 https://devdojo.com/bobbyiliev/how-to-create-a-simple-event-streaming-in-laravel
+
+https://github.com/orhanerday/open-ai#chat-as-known-as-chatgpt-api
 -->
     <div class="flex flex-1  flex-col md:flex-row lg:flex-row mx-2">
         <div class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full">
@@ -48,8 +50,9 @@ https://devdojo.com/bobbyiliev/how-to-create-a-simple-event-streaming-in-laravel
                 //this.content = "started";
                 // this.eventSource.onmessage = function(event) {
                 this.eventSource.onmessage = (event) => {
-                    if (event.data!='[DONE]') {
-                        this.contents.push(event.data);
+                    data = JSON.parse(event.data);
+                    if (data.content!='[DONE]') {
+                        this.contents.push(data.content);
                     }
                     // if (event.data.content) {
                     //     this.content = data.content;
