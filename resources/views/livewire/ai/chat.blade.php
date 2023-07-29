@@ -25,12 +25,15 @@ https://github.com/orhanerday/open-ai#chat-as-known-as-chatgpt-api
                         </div>
                     </div>
                     <div class="flex flex-wrap mb-6 p-10 ">
-                        <span x-text="contents"> </span>
+                        <span x-text="contents" x-show="!isLoading"> </span>
+                        <span  class="animate-bounce h-4 w-5 flex rounded" x-show="isLoading">
+                            <span class="text-3xl text-black/50"> ..... </span>
+                        </span>
                     </div>
                     <div class="md:flex md:items-center">
                         <div class="md:w-1/3"></div>
                         <div class="md:w-2/3">
-                            <button class="shadow bg-gray-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"  x-bind:class="{ 'cursor-not-allowed': (isLoading==true) } " x-bind:disabled="isLoading" @click.prevent="sendRequestAlpine()" >
+                            <button class="shadow bg-gray-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" x-bind:class="{ 'cursor-not-allowed': (isLoading==true) } " x-bind:disabled="isLoading" @click.prevent="sendRequestAlpine()">
                                 SEND
                             </button>
                         </div>
@@ -44,20 +47,21 @@ https://github.com/orhanerday/open-ai#chat-as-known-as-chatgpt-api
     function handler() {
         return {
             contents: '',
-            content:'',
+            content: '',
             eventSource: null,
             isLoading: false,
             sendRequestAlpine() {
                 this.isLoading = true,
-                this.contents = "";
-                this.eventSource = new EventSource('/chat/send/'+btoa(this.content));
+                    this.contents = "";
+                this.eventSource = new EventSource('/chat/send/' + btoa(this.content));
                 this.eventSource.onmessage = (event) => {
+                    this.isLoading = false;
+
                     data = JSON.parse(event.data);
-                    if (data.content!='[DONE]') {
-                        this.contents +=data.content;
+                    if (data.content != '[DONE]') {
+                        this.contents += data.content;
                     }
-                    if (data.content == '[DONE]'){
-                        this.isLoading = false;
+                    if (data.content == '[DONE]') {
                     }
                 }
             }
