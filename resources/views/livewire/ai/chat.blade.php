@@ -19,7 +19,7 @@ https://github.com/orhanerday/open-ai#chat-as-known-as-chatgpt-api
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1" for="grid-first-name">
                                 Name
                             </label>
-                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500" wire:model="text" id="grid-first-name" type="text">
+                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500" x-model="content" id="grid-first-name" type="text">
                             <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
                             @error('name') <span class="error text-red-500">{{ $message }}</span> @enderror
                         </div>
@@ -43,28 +43,17 @@ https://github.com/orhanerday/open-ai#chat-as-known-as-chatgpt-api
 <script>
     function handler() {
         return {
-            contents: [],
+            contents: '',
+            content:'',
             eventSource: null,
             sendRequestAlpine() {
-                this.eventSource = new EventSource('/chat/send');
-                //this.content = "started";
-                // this.eventSource.onmessage = function(event) {
+                this.eventSource = new EventSource('/chat/send/'+this.content);
                 this.eventSource.onmessage = (event) => {
                     data = JSON.parse(event.data);
                     if (data.content!='[DONE]') {
-                        this.contents.push(data.content);
+                        this.contents +=data.content;
                     }
-                    // if (event.data.content) {
-                    //     this.content = data.content;
-                    // }
                 }
-
-                //     await this.$wire.sendRequest()
-                //         .then(result => {
-                //             alert(JSON.stringify(result));
-                //         })
-
-
             }
         }
     }
