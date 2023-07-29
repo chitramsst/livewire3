@@ -48,7 +48,7 @@ https://github.com/orhanerday/open-ai#chat-as-known-as-chatgpt-api
             eventSource: null,
             sendRequestAlpine() {
                 this.contents = "";
-                this.eventSource = new EventSource('/chat/send/'+this.content);
+                this.eventSource = new EventSource('/chat/send/'+btoa(this.content));
                 this.eventSource.onmessage = (event) => {
                     data = JSON.parse(event.data);
                     if (data.content!='[DONE]') {

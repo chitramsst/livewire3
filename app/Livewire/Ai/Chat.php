@@ -27,8 +27,8 @@ class Chat extends Component
         // ]);
 
         // $this->content = trim($result['choices'][0]['text']);
-        $this->content = $msg;
-        $client = OpenAI::client('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');
+        $this->content = base64_decode($msg);
+        $client = OpenAI::client('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');
         return response()->stream(function () use ($client) {
             $stream = $client->chat()->createStreamed([
                 'model' => 'gpt-3.5-turbo',
