@@ -3,6 +3,7 @@
         <div class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full">
             <div class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b flex justify-between items-center">
                 <div class="flex flex-row font-mono font-extralight"> <span class="mx-2"> Product </span></div>
+                <x-test title="title" />
                 <div>
 
                     <a class="bg-[#E2D36B] text-white px-5 py-1 rounded-2xl shadow-lg border border-spacing-2" href="{{route('product.create')}}"> <i class="fas fa-arrow-back"></i> Create </a>
@@ -33,11 +34,7 @@
                                     @else
                                     <img class="inline-block h-16 w-16 rounded-full" src="{{ asset('assets/icon-no-image.svg') }}" alt="">
                                     @endif
-                                    <!-- <td>
-                    <button class="bg-blue-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-full">
-                        Twitter
-                    </button>
-                </td> -->
+                             
                                     {{$row->name}}
                                 </td>
                                 <td>{{ $row->price }}</td>
