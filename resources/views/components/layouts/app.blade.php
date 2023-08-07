@@ -28,12 +28,15 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+    
 
     @stack('css')
 </head>
 
-<body>
-    <div class="mx-auto bg-grey-400">
+<body x-data="{
+    darkMode: false
+}">
+    <div class="mx-auto" :class="darkMode==true ? 'bg-gray-700' : 'bg-slate-100'">
         <!--Screen-->
         <div class="min-h-screen flex flex-col">
             <!--Header Section Starts Here-->

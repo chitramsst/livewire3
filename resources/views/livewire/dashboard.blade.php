@@ -45,7 +45,7 @@
             </div>
         </div>
     </div>
-
+<!-- 
     <div class=" justify-center shadow items-center flex flex-col m-5" @click="open=!open">
         <div class=" rounded-md bg-gray-500  shadow-md py-2 px-5 text-white"> click </div>
     </div>
@@ -87,5 +87,5 @@
                 </span>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>

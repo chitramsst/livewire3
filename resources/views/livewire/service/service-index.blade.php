@@ -3,7 +3,7 @@
         <div class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full">
             <div class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b flex justify-between items-center">
                 Service
-                <a class="bg-gray-900 text-white px-5 py-1 rounded-2xl shadow-lg border border-spacing-2" href="{{route('product.list')}}"> <i class="fas fa-arrow-back"></i> Back </a>
+                <a class="bg-[#96D7C6] text-white px-5 py-1 rounded-2xl shadow-lg border border-spacing-2" href="{{route('product.list')}}"> <i class="fas fa-arrow-back"></i> Back </a>
             </div>
             <div class="p-3">
                 <form class="w-full flex flex-row">
@@ -16,9 +16,7 @@
                         </div>
                     </div>
                     <div class="md:flex md:items-center text-right -px-10">
-                        <div @click="getData" class="shadow bg-gray-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
-                            ADD
-                        </div>
+                    <a class="bg-[#E2D36B] text-white px-5 py-1 rounded-2xl shadow-lg border border-spacing-2" @click="getData"> ADD </a>
                     </div>
                 </form>
             </div>
@@ -26,16 +24,16 @@
             <div class="p-3 w-full">
                 <div class="flex flex-row w-full space-x-10 items-center justify-between">
                     <div class="w-[5%]">
-                        <span class="appearance-none text-center block w-full bg-gray-500 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"> # </span>
+                        <span class="appearance-none text-center block w-full bg-[#96D7C6] text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"> # </span>
                     </div>
                     <div class="w-[30%]">
-                        <span class="appearance-none text-center block w-full bg-gray-500 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"> Category </span>
+                        <span class="appearance-none text-center block w-full bg-[#96D7C6] text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"> Category </span>
                     </div>
                     <div class="w-[30%]">
-                        <span class="appearance-none text-center block w-full bg-gray-500 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"> Name </span>
+                        <span class="appearance-none text-center block w-full bg-[#96D7C6] text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"> Name </span>
                     </div>
                     <div class="w-[30%]">
-                        <span class="appearance-none text-center block w-full bg-gray-500 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"> Price </span>
+                        <span class="appearance-none text-center block w-full bg-[#96D7C6] text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"> Price </span>
                     </div>
                     <div class="w-[5%]">
 
@@ -75,7 +73,7 @@
                     </div>
                 </template>
                 <div class="text-right">
-                    <button class="shadow bg-green-900 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" @click="addNewField">
+                    <button class="shadow bg-[#BAC94A] hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" @click="addNewField">
                         + ADD ROW
                     </button>
                 </div>

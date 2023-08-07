@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,5 +29,19 @@ class DatabaseSeeder extends Seeder
         ];
 
         \App\Models\Category::insert($data);
+
+          /* admin seeder */
+          \App\Models\User::create([
+            'name' => "admin",
+            "email" => "admin@admin.com",
+            "password" => Hash::make('123456'),
+            "user_type" => 1,
+            "is_active" => 1
+        ]);
+        /* seeder call */
+        $this->call([
+            MasterControlSeeder::class,
+        ]);
+
     }
 }

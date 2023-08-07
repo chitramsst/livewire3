@@ -8,6 +8,8 @@ use App\Livewire\Product\Product;
 use App\Livewire\Cart\Cart;
 use App\Livewire\DragDrop;
 use App\Livewire\DragDropTask;
+use App\Livewire\Home;
+use App\Livewire\Login;
 use App\Livewire\Service\ServiceIndex;
 
 /*
@@ -26,7 +28,9 @@ use App\Livewire\Service\ServiceIndex;
 // });
 
 //Route::get('/',Dashboard::class)->name('dashboard');
-Route::get('/',Dashboard::class)->name('dashboard');
+Route::group(['middleware' => 'admin'], function () {
+Route::get('/home',Home::class)->name('home');
+Route::get('/dashboard',Dashboard::class)->name('admin.dashboard');
 Route::get('/product',Index::class)->name('product.list');
 Route::get('/product/create',Product::class)->name('product.create');
 Route::get('cart',Cart::class)->name('cart');
@@ -35,3 +39,6 @@ Route::get('/chat',Chat::class)->name('chat');
 Route::get('/chat/send/{msg}',[Chat::class,'sendRequest'])->name('chat-send');
 Route::get('/drag-and-drop',DragDrop::class)->name('drag-and-drop');
 Route::get('/drag-and-drop-task',DragDropTask::class)->name('drag-and-drop-task');
+});
+
+Route::get('/',Login::class)->name('login');
