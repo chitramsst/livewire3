@@ -41,7 +41,7 @@
                 <td colspan="2" class="hidden-xs"></td>
             </div> -->
         </div>
-        <div class="w-[30%] h-80 bg-gray-300 p-5 rounded-md">
+        <div class="w-[30%] h-80 bg-red-200 p-5 rounded-md">
             <div>
             <h1 class="font-bold text-lg"> Summary </h1>
             <div class="flex flex-col h-full w-full">
