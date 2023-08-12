@@ -3,7 +3,10 @@
         <div class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full">
             <div class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b flex justify-between items-center">
                 <div class="flex flex-row font-mono font-extralight"> <span class="mx-2"> Product </span></div>
-                <x-test title="title" />
+
+                  <!-- component -->
+                <x-test title="title" message="yes"/>
+                    
                 <div>
 
                     <a class="bg-[#E2D36B] text-white px-5 py-1 rounded-2xl shadow-lg border border-spacing-2" href="{{route('product.create')}}"> <i class="fas fa-arrow-back"></i> Create </a>

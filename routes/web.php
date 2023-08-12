@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Ai\Chat;
+use App\Livewire\CardSlider;
 use App\Livewire\Dashboard;
 use App\Livewire\Product\Index;
 use Illuminate\Support\Facades\Route;
@@ -42,3 +43,4 @@ Route::get('/drag-and-drop-task',DragDropTask::class)->name('drag-and-drop-task'
 });
 
 Route::get('/',Login::class)->name('login');
+Route::get('card',CardSlider::class);

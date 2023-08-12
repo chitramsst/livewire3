@@ -14,6 +14,7 @@ class Test extends Component
     
     public function __construct(
         public string $title,
+        public string $message
     )
     {
     } 
